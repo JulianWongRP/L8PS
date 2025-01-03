@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {Button, StatusBar, TextInput, View, Text} from "react-native";
+import {Button, StatusBar, TextInput, View, Text, StyleSheet} from "react-native";
 
 
 const Add = ({navigation, route}) => {
@@ -15,17 +15,40 @@ const Add = ({navigation, route}) => {
         navigation.navigate("Home");
      };
 
+    const styles = StyleSheet.create({
+        container: {
+            margin: 10,
+            padding: 10,
+            marginTop: 50,
+        },
+
+        words: {
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: 'grey',
+
+        }
+    })
      return (
-        <View>
+        <View style={styles.container}>
             <StatusBar/>
-            <Text>Title:</Text>
-            <TextInput style={{borderWidth:1}} onChangeText={(text)=>setTitle(text)}></TextInput>
-            <Text>ISBN:</Text>
-            <TextInput style={{borderWidth:1}} onChangeText={(text)=>setISBN(text)}></TextInput>
-            <Text>Image URL:</Text>
-            <TextInput style={{borderWidth:1}} onChangeText={(text)=>setImg(text)}></TextInput>
-            <Text>Copies Owned:</Text>
-            <TextInput style={{borderWidth:1}} onChangeText={(text)=>setAmt(text)}></TextInput>
+            <View>
+                <Text style={styles.words}>Title:</Text>
+                <TextInput style={{borderWidth:1}} onChangeText={(text)=>setTitle(text)}></TextInput>
+            </View>
+            <View>
+                <Text style={styles.words}>ISBN:</Text>
+                <TextInput style={{borderWidth:1}} onChangeText={(text)=>setISBN(text)}></TextInput>
+            </View>
+            <View>
+                <Text style={styles.words}>Image URL:</Text>
+                <TextInput style={{borderWidth:1}} onChangeText={(text)=>setImg(text)}></TextInput>
+            </View>
+            <View>
+                <Text style={styles.words}>Copies Owned:</Text>
+                <TextInput style={{borderWidth:1}} onChangeText={(text)=>setAmt(text)}></TextInput>
+            </View>
+
 
             <Button title='Submit'
                     onPress={()=>{
